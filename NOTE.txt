@@ -1,0 +1,19 @@
+
+How to install:
+
+1. Install Claude Code CLI and log in (If you don't have it)
+2. Run in Terminal:
+	./install-usage-hook.sh
+	OR 
+	bash install-usage-hook.sh
+3. Open Claude Code CLI once
+4. Copy ClaudeUsageBar.app into Applications folder
+5. Run in Terminal: 
+	sudo xattr -d com.apple.quarantine /Applications/ClaudeUsageBar.app
+6. Open ClaudeUsageBar.app
+
+
+
+Where ClaudeUsageBar itself lands in that list doesn't matter — it only reads a file. Install it whenever. If you open it before step 3 it just says "File not found… make sure the Claude Code statusLine hook is configured."
+
+And if you get the order wrong, nothing breaks — run the installer late and reopen Claude Code, and the file appears within a few seconds.
