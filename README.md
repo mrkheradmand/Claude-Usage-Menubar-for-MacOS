@@ -1,8 +1,8 @@
 # ClaudeUsageBar
 
-A tiny macOS menu bar app that shows your live Claude Code usage — 5-hour and 7-day rate limit windows — right in the menu bar.
+A tiny macOS menu bar app that shows your live Claude Code CLI usage — 5-hour and 7-day rate limit windows — right in the menu bar.
 
-It works by reading a small JSON snapshot file that a Claude Code `statusLine` hook writes on every prompt. ClaudeUsageBar doesn't call any API itself; it just displays what Claude Code already reports.
+It works by reading a small JSON snapshot file that a Claude Code CLI `statusLine` hook writes on every prompt. ClaudeUsageBar doesn't call any API itself; it just displays what Claude Code CLI already reports.
 
 ## Features
 
@@ -25,7 +25,7 @@ It works by reading a small JSON snapshot file that a Claude Code `statusLine` h
    ```
    ./install-usage-hook.sh
    ```
-   This wires a `statusLine` hook into `~/.claude/settings.json` that captures usage data to `~/.claude/usage-snapshot.json` on each Claude Code prompt. It's safe to re-run and merges into your existing settings without overwriting unrelated keys.
+   This wires a `statusLine` hook into `~/.claude/settings.json` that captures usage data to `~/.claude/usage-snapshot.json` on each Claude Code CLI prompt. It's safe to re-run and merges into your existing settings without overwriting unrelated keys.
 3. Open the Claude Code CLI once so the hook fires and the snapshot file is created.
 4. Copy `ClaudeUsageBar.app` into your `/Applications` folder.
 5. Remove the quarantine flag (since the app isn't notarized):
@@ -34,12 +34,12 @@ It works by reading a small JSON snapshot file that a Claude Code `statusLine` h
    ```
 6. Open `ClaudeUsageBar.app`.
 
-If you open the app before step 3, it will just say "File not found… make sure the Claude Code statusLine hook is configured." — nothing is broken. Run the installer late and reopen Claude Code, and the snapshot file will appear within a few seconds.
+If you open the app before step 3, it will just say "File not found… make sure the Claude Code statusLine hook is configured." — nothing is broken. Run the installer late and reopen Claude Code CLI, and the snapshot file will appear within a few seconds.
 
 ## How it works
 
-- `install-usage-hook.sh` installs `~/.claude/hooks/usage-snapshot.sh` and points Claude Code's `statusLine` setting at it.
-- On each Claude Code invocation, that hook reads the statusline JSON payload from stdin, extracts `rate_limits.five_hour`, `rate_limits.seven_day`, `spend_limit`, and `context_window.used_percentage`, and writes them to `~/.claude/usage-snapshot.json`.
+- `install-usage-hook.sh` installs `~/.claude/hooks/usage-snapshot.sh` and points Claude Code CLI's `statusLine` setting at it.
+- On each Claude Code CLI invocation, that hook reads the statusline JSON payload from stdin, extracts `rate_limits.five_hour`, `rate_limits.seven_day`, `spend_limit`, and `context_window.used_percentage`, and writes them to `~/.claude/usage-snapshot.json`.
 - `ClaudeUsageBar.app` polls that file and renders the values in the menu bar.
 
 ## Uninstall
