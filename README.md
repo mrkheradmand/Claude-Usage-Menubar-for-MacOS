@@ -15,7 +15,7 @@ It works by reading a small JSON snapshot file that a Claude Code CLI `statusLin
 ## Requirements
 
 - macOS 14.0 or later
-- [Claude Code CLI](https://claude.com/claude-code), installed and logged in
+- [Claude Code CLI](https://code.claude.com/docs/en/quickstart#step-1-install-claude-code), installed and logged in
 - `jq` (ships with recent macOS; otherwise `brew install jq`)
 
 ## Install
