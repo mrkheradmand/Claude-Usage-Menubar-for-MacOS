@@ -6,6 +6,10 @@ A tiny macOS menu bar app that shows your live Claude Code CLI usage — 5-hour 
   <img src="images/menubar.png" alt="ClaudeUsageBar popover showing 5-hour session and weekly usage">
 </p>
 
+<p align="center">
+  <img src="images/menubar2.png" width="350px" alt="ClaudeUsageBar popover showing 5-hour session and weekly usage">
+</p>
+
 It works by reading a small JSON snapshot file that a Claude Code CLI `statusLine` hook writes on every prompt. ClaudeUsageBar doesn't call any API itself; it just displays what Claude Code CLI already reports.
 
 <p align="center">
@@ -21,7 +25,7 @@ It works by reading a small JSON snapshot file that a Claude Code CLI `statusLin
   - Format options showing the 5-hour window only: `C50%` (default), `C 50%`, `✳ 50%`, `50%`.
   - Format options showing the 5-hour and weekly windows together: `50W40`, `50%-40%`, `5H50% W40%`, `5H=50% W=40%`. The first number is the 5-hour window, the second the weekly one, and each option is named after the format applied to 50% and 40%. A weekly window Claude Code no longer reports shows as `–`.
   - Optional dynamic color tinting (Green < 50%, Yellow 50–74%, Orange 75–89%, Red ≥ 90%).
-- **System Notifications**: Configurable alerts when your 5-hour window usage reaches **75%**, **90%**, or **100% (capacity reached)**.
+- **System Notifications**: Configurable alerts when your 5-hour window usage reaches **50%**, **75%**, **90%**, or **100% (capacity reached)**.
 - **Two Data Sources**:
   - **Claude Usage File**: Reads the real 5-hour and weekly limits Claude Code reports, from `~/.claude/usage-snapshot.json`. No tokens, no credentials, no network access.
   - **Demo / Simulation Mode**: Built-in interactive testing mode with sliders to test any percentage (0–100%) and remaining time without requiring the file.
@@ -29,6 +33,9 @@ It works by reading a small JSON snapshot file that a Claude Code CLI `statusLin
   - Built with pure Swift 6 and SwiftUI (`MenuBarExtra` / AppKit).
   - Background polling (1m, 3m, 5m default, 15m) automatically pauses when your Mac goes to sleep and resumes on wake.
   - Zero third-party dependencies.
+- **Pause monitoring** — a pause button in the popover header
+- **Compact icon** — a ring gauge instead of text: outer ring is the 5-hour window, inner ring the weekly one, each drawn as an arc over a faint track
+- **Launch at Login**
 
 ## Requirements
 
