@@ -7,7 +7,7 @@ A tiny macOS menu bar app that shows your live Claude Code CLI usage — 5-hour 
 </p>
 
 <p align="center">
-  <img src="images/menubar2.png" width="350px" alt="ClaudeUsageBar popover showing 5-hour session and weekly usage">
+  <img src="images/menubar2.png" width="360px" alt="ClaudeUsageBar popover showing 5-hour session and weekly usage">
 </p>
 
 It works by reading a small JSON snapshot file that a Claude Code CLI `statusLine` hook writes on every prompt. ClaudeUsageBar doesn't call any API itself; it just displays what Claude Code CLI already reports.
