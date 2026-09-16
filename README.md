@@ -14,11 +14,21 @@ It works by reading a small JSON snapshot file that a Claude Code CLI `statusLin
 
 ## Features
 
-- Menu bar text showing 5h / 7d usage percentages
-- Color-coded text: green (<50%), amber (50–89%), red (89%+)
-- Popover with more detail (context window usage, spend limit, last captured time)
-- Configurable background refresh interval
-- Runs as a pure menu bar item (no Dock icon)
+- **Menu Bar Item**: Formatted as `C50%` by default using monospaced digits to prevent jitter.
+- **5-Hour Limit Card**: Real-time progress bar, percentage used, and countdown time until reset (e.g. `Resets in 2h 15m`).
+- **Interactive Popover**: Detailed metrics, weekly quotas, live connection badge, one-click refresh, quick link to Claude.ai, and Preferences.
+- **Customizable Appearance**:
+  - Format options showing the 5-hour window only: `C50%` (default), `C 50%`, `✳ 50%`, `50%`.
+  - Format options showing the 5-hour and weekly windows together: `50W40`, `50%-40%`, `5H50% W40%`, `5H=50% W=40%`. The first number is the 5-hour window, the second the weekly one, and each option is named after the format applied to 50% and 40%. A weekly window Claude Code no longer reports shows as `–`.
+  - Optional dynamic color tinting (Green < 50%, Yellow 50–74%, Orange 75–89%, Red ≥ 90%).
+- **System Notifications**: Configurable alerts when your 5-hour window usage reaches **75%**, **90%**, or **100% (capacity reached)**.
+- **Two Data Sources**:
+  - **Claude Usage File**: Reads the real 5-hour and weekly limits Claude Code reports, from `~/.claude/usage-snapshot.json`. No tokens, no credentials, no network access.
+  - **Demo / Simulation Mode**: Built-in interactive testing mode with sliders to test any percentage (0–100%) and remaining time without requiring the file.
+- **Native & Power-Efficient**:
+  - Built with pure Swift 6 and SwiftUI (`MenuBarExtra` / AppKit).
+  - Background polling (1m, 3m, 5m default, 15m) automatically pauses when your Mac goes to sleep and resumes on wake.
+  - Zero third-party dependencies.
 
 ## Requirements
 
