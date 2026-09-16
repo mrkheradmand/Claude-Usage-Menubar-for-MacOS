@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="app.jpg" alt="ClaudeUsageBar popover showing 5-hour session and weekly usage">
+</p>
+
 # ClaudeUsageBar
 
 A tiny macOS menu bar app that shows your live Claude Code CLI usage — 5-hour and 7-day rate limit windows — right in the menu bar.
